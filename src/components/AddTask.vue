@@ -1,13 +1,23 @@
 <script lang="ts">
+import { ref } from 'vue'
+
 export default {
-  data() {
-    return {
-      text: ''
+  props: {
+    handleFormSubmit: {
+      type: Function,
+      required: true
     }
   },
-  methods: {
-    onSubmit() {
-      console.log('Submitted')
+  setup(props) {
+    const text = ref('')
+
+    const onSubmit = () => {
+      props.handleFormSubmit(text.value)
+    }
+
+    return {
+      text,
+      onSubmit
     }
   }
 }

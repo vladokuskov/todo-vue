@@ -1,14 +1,24 @@
 <script setup lang="ts">
 import TasksList from './components/TasksList.vue'
 import AddTask from './components/AddTask.vue'
+
+const tasks = [] as any
+
+const handleFormSubmit = (text: string) => {
+  const task = {
+    text,
+    date: Date.now()
+  }
+  tasks.push(task)
+}
 </script>
 
 <template>
   <main class="main-wrapper">
     <header><h1>Todo app ⏲️</h1></header>
     <div class="content-wrapper">
-      <AddTask />
-      <TasksList />
+      <AddTask :handleFormSubmit="handleFormSubmit" />
+      <TasksList tasks="tasks" />
     </div>
   </main>
 </template>
