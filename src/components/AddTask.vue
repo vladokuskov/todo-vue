@@ -45,7 +45,7 @@ input {
   border: none;
   font-family: Roboto;
   font-weight: 500;
-  width: full;
+  width: 100%;
   transition: background-color 0.3s;
 }
 
