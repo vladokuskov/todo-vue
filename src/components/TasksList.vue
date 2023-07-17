@@ -1,19 +1,15 @@
-<script lang="ts">
-import { defineComponent } from 'vue'
+<script setup lang="ts">
+import { toRefs } from 'vue'
 
-interface Task {
-  text: string
-  date: number
-}
-
-export default defineComponent({
-  props: {
-    tasks: {
-      type: Array as () => Task[],
-      required: true
-    }
+const props = defineProps({
+  tasks: {
+    type: Object,
+    required: true,
   }
 })
+
+const { tasks } = toRefs(props)
+
 </script>
 
 <template>
@@ -33,6 +29,7 @@ export default defineComponent({
   gap: 1rem;
   width: 100%;
 }
+
 .task {
   list-style: none;
   width: 100%;

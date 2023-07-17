@@ -21,9 +21,11 @@ const handleFormSubmit = (text: string) => {
 
 <template>
   <main class="main-wrapper">
-    <header><h1>ToDo Vue ⏲️</h1></header>
+    <header>
+      <h1>ToDo Vue ⏲️</h1>
+    </header>
     <div class="content-wrapper">
-      <AddTask :handleFormSubmit="handleFormSubmit" />
+      <AddTask :onAdd-task="handleFormSubmit" />
       <TasksList :tasks="tasks" />
     </div>
   </main>
@@ -49,6 +51,7 @@ const handleFormSubmit = (text: string) => {
   justify-content: center;
   gap: 2rem;
 }
+
 h1 {
   text-align: center;
   font-weight: 500;

@@ -1,31 +1,18 @@
-<script lang="ts">
+<script setup lang="ts">
 import { ref } from 'vue'
 
-export default {
-  props: {
-    handleFormSubmit: {
-      type: Function,
-      required: true
-    }
-  },
-  setup(props) {
-    const text = ref('')
+const text = ref('')
 
-    const onSubmit = () => {
-      props.handleFormSubmit(text.value)
-    }
+const emit = defineEmits(['add-task'])
 
-    return {
-      text,
-      onSubmit
-    }
-  }
+const addTask = () => {
+  emit('add-task', text.value)
 }
 </script>
 
 <template>
-  <form v-on:submit.prevent="onSubmit">
-    <input v-model="text" />
+  <form v-on:submit.prevent="addTask">
+    <input v-model="text" type="text" />
     <button type="submit">Add</button>
   </form>
 </template>
