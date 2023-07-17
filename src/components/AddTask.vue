@@ -6,7 +6,11 @@ const text = ref('')
 const emit = defineEmits(['add-task'])
 
 const addTask = () => {
-  emit('add-task', text.value)
+  if (text.value.length !== 0) {
+    emit('add-task', text.value)
+  }
+
+  text.value = ''
 }
 </script>
 
